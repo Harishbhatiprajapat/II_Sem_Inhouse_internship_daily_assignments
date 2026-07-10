@@ -1,73 +1,58 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Validation Form</title>
+
+<title>Registration Successful</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
-<body>
 
-<h2>Student Registration</h2>
+<body style="background:#eef2f7;">
 
-<?php
-$errors = [];
+<div class="container mt-5">
 
-if(isset($_POST['submit']))
-{
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
+<div class="card shadow">
 
-    // Email Validation
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
-    {
-        $errors[] = "Please enter a valid email address.";
-    }
+<div class="card-header bg-success text-white">
 
-    // Phone Validation
-    if(!is_numeric($phone))
-    {
-        $errors[] = "Phone number should contain only digits.";
-    }
-    else if(strlen($phone) < 10)
-    {
-        $errors[] = "Phone number is too short.";
-    }
-    else if(strlen($phone) > 10)
-    {
-        $errors[] = "Phone number is too long.";
-    }
+<h3>Registration Details</h3>
 
-    // Display Success
-    if(empty($errors))
-    {
-        echo "<h3 style='color:green;'>Form Submitted Successfully!</h3>";
-    }
-}
-?>
+</div>
 
-<!-- Display Errors -->
-<?php
-if(!empty($errors))
-{
-    echo "<ul style='color:red;'>";
-    foreach($errors as $error)
-    {
-        echo "<li>$error</li>";
-    }
-    echo "</ul>";
-}
-?>
+<div class="card-body">
 
-<form method="post">
+    <div class="card text-center shadow mt-4">
+    <div class="card-body">
+        <h2 class="text-success">🎉 Registration Successful!</h2>
+        <p>Thank you for registering. Your information has been received successfully.</p>
+    </div>
+</div>
 
-    Email:<br>
-    <input type="text" name="email"><br><br>
+<p><b>Name:</b> <?php echo $_POST['name']; ?></p>
 
-    Phone:<br>
-    <input type="text" name="phone"><br><br>
+<p><b>Phone:</b> <?php echo $_POST['phone']; ?></p>
 
-    <input type="submit" name="submit" value="Submit">
+<p><b>Email:</b> <?php echo $_POST['email']; ?></p>
 
-</form>
+<p><b>Date of Birth:</b> <?php echo $_POST['dob']; ?></p>
+
+<p><b>Country:</b> <?php echo $_POST['country']; ?></p>
+
+<p><b>Course:</b> <?php echo $_POST['course']; ?></p>
+
+<p><b>Gender:</b> <?php echo $_POST['gender']; ?></p>
+
+<p><b>Address:</b> <?php echo $_POST['address']; ?></p>
+
+<div class= "text-center mt-4">
+<a href="index.html" class="btn btn-primary">Register Another Student</a>
+</div>
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
